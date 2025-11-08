@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatPro — Real-time 1:1</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+<!-- LIKITHA_TEST_123 -->
+
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">💬 ChatPro</div>
+
+        <div class="me card">
+          <img id="me-avatar" class="avatar" src="" alt="avatar" />
+          <div class="me-info">
+            <div id="me-name" class="name">Guest</div>
+            <div id="me-number" class="muted">—</div>
+          </div>
+
+          <label class="btn small">
+            Change Avatar
+            <input id="avatar-file" type="file" accept="image/*" hidden />
+          </label>
+
+          <button id="btn-logout" class="btn danger small">Logout</button>
+        </div>
+
+        <div class="card">
+          <input id="search" placeholder="Search name or number…" />
+          <div id="results"></div>
+        </div>
+
+        <div class="card">
+          <h3>Current chat</h3>
+          <div id="peer"></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="auth card" id="auth">
+          <h2>Welcome</h2>
+
+          <div class="row">
+            <input id="su-name" placeholder="new username" />
+            <input id="su-pass" type="password" placeholder="password" />
+            <button id="btn-signup" class="btn primary">Sign up</button>
+          </div>
+
+          <div class="row">
+            <input id="li-name" placeholder="username" />
+            <input id="li-pass" type="password" placeholder="password" />
+            <button id="btn-login" class="btn">Login</button>
+          </div>
+
+          <p class="muted">
+            Pick a short username. A 10-digit chat number will be generated.
+          </p>
+        </div>
+
+        <div class="panel card hidden" id="chat">
+          <div class="chat-header">
+            <div>
+              <div id="peer-name">No chat selected</div>
+              <div id="peer-typing" class="muted"></div>
+            </div>
+
+            <div class="actions">
+              <button id="btn-call" class="btn">📞 Call</button>
+
+              <label class="btn">
+                📎 Media
+                <input id="file" type="file" accept="image/*,video/*" hidden />
+              </label>
+            </div>
+          </div>
+
+          <div id="messages" class="messages"></div>
+
+          <div class="composer">
+            <input id="text" placeholder="Type a message..." />
+            <div class="composer-actions">
+              <button id="btn-send" class="btn primary">Send</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="call-modal" class="modal hidden">
+      <div class="modal-content">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+
+        <div class="call-actions">
+          <button id="end-call" class="btn danger">End Call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ CORRECT SOCKET.IO PATH -->
+   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+
+    <!-- ✅ Your frontend code (always loaded after socket.io) -->
+  <script type="module" src="/js/main.js"></script>
+
+  </body>
+</html>
